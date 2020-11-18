@@ -5,14 +5,14 @@
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Please enter the name of the event: " FontSize="20" TextColor="Black"/>
-            <Entry Text="{Binding EntryEventName}" Placeholder="Event Name"/>
+            <Entry x:Name="nameEntry" Text="" Placeholder="Event Name"/>
             <Label Text="Please enter the location: " FontSize="20" TextColor="Black"/>
-            <Entry Text="{Binding EntryEventLocation}" Placeholder="Event Location"/>
+            <Entry x:Name="locationEntry" Text="" Placeholder="Event Location"/>
             <Label Text="Please enter the event description: " FontSize="20" TextColor="Black"/>
-            <Entry Text="{Binding EntryEventDescription}" Placeholder="Event Description"/>
+            <Entry x:Name="descriptionEntry" Text="" Placeholder="Event Description"/>
 
             <Button Text="Ok"
-                    Command="{Binding UpdateEventCommand}"/>
+                    Clicked="OnButtonClicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

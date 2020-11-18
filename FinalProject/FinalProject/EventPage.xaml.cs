@@ -16,6 +16,19 @@ namespace FinalProject
         {
             InitializeComponent();
         }
+
+        async void OnButtonClicked(object sender, EventArgs e) {
+            if (!string.IsNullOrWhiteSpace(nameEntry.Text)
+                && !string.IsNullOrWhiteSpace(descriptionEntry.Text)
+                && !string.IsNullOrEmpty(locationEntry.Text)) {
+                
+                await App.Database.SaveEventAsync(new Event {
+                    Name = nameEntry.Text,
+                    Description = descriptionEntry.Text,
+                    Location = locationEntry.Text
+                });
+            }
+        }
     }
 
     class EventViewModel

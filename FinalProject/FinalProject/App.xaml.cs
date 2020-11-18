@@ -7,6 +7,7 @@ namespace FinalProject {
     public partial class App : Application {
         static Database database;
 
+        // Holds a reference to the event database for the calendar
         public static Database Database {
             get {
                 if (database == null) {
