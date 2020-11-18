@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 using SQLite;
 
 namespace FinalProject {
@@ -10,5 +12,14 @@ namespace FinalProject {
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public int Reminder { get; set; }
+      
+        public Event(string e, string d, DateTime start, DateTime end)
+        {
+            this.Name = e;
+            this.Decription = d;
+            this.StartTime = start;
+            this.EndTime = end;
+        }
+
     }
 }
