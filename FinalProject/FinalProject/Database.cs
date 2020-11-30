@@ -36,6 +36,11 @@ namespace FinalProject {
             return _database.InsertAsync(_event);
         }
 
+        public Task<int> EditEventAsync(Event _event)
+        {
+            return _database.InsertOrReplaceAsync(_event);
+        }
+
         /// <summary>
         /// Removes an <c>Event</c> to the SQLite database by the ID (primary key) of the <c>Event</c>.
         /// </summary>
