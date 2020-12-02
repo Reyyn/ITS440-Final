@@ -22,6 +22,25 @@ namespace FinalProject
             await Navigation.PushAsync(new EventPage());
         }
 
+        public async void EditEvent(object sender, EventArgs args)
+        {
+            if (listView.SelectedItem != null)
+                await Navigation.PushAsync(new EventPage((Event)listView.SelectedItem));
+            else
+                await DisplayAlert("ERROR", "You did not select an event to edit.", "OK");
+        }
+
+        public async void RemoveEvent(object sender, EventArgs args)
+        {
+            if (listView.SelectedItem != null)
+            {
+                await App.Database.RemoveEventAsync((Event)listView.SelectedItem);  //remove selected event
+                await Navigation.PushAsync(new MainPage());                         //reload page with updated list
+            }
+            else
+                await DisplayAlert("ERROR", "You did not select an event to remove.", "OK");
+        }
+
         // Populates listView from database
         protected override async void OnAppearing() {
             base.OnAppearing();

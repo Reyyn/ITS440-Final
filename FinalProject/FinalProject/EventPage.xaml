@@ -4,6 +4,7 @@
              x:Class="FinalProject.EventPage">
     <ContentPage.Content>
         <StackLayout>
+            <Label x:Name="eventNameLabel" HorizontalOptions="CenterAndExpand" TextColor="Black" FontSize="26"/>
             <Label Text="Please enter the name of the event: " FontSize="20" TextColor="Black"/>
             <Entry x:Name="nameEntry" Text="" Placeholder="Event Name"/>
             <Label Text="Please enter the location: " FontSize="20" TextColor="Black"/>
@@ -12,7 +13,13 @@
             <Entry x:Name="descriptionEntry" Text="" Placeholder="Event Description"/>
 
             <Button Text="Ok"
-                    Clicked="OnButtonClicked"/>
+                    x:Name="NewEventSaveButton"
+                    Clicked="SaveNewEvent"
+                    IsVisible="False"/>
+            <Button Text="Ok"
+                    x:Name="EditEventButton"
+                    Clicked="EditEvent"
+                    IsVisible="False"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
