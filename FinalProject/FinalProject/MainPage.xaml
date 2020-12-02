@@ -6,10 +6,11 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <controls:Calendar ShowNumberOfWeek="False"
-                                   StartDay="Monday"
-                                   />
-            <Button Text="event list" Clicked="EventList"/>
+            <controls:Calendar x:Name="calendar"
+                               ShowNumberOfWeek="False"
+                               StartDay="Monday"
+                               />
+            <Button Text="View Events" Clicked="EventList"/>
         </StackLayout>
     </ContentPage.Content>
 

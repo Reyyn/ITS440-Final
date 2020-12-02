@@ -12,12 +12,12 @@ namespace FinalProject {
     public partial class ListPage : ContentPage {
         public ListPage() {
             InitializeComponent();
-
-            BindingContext = new EventViewModel();
         }
 
         public async void NewEvent(object sender, EventArgs args) {
-            await Navigation.PushAsync(new EventPage());
+            EventPage ePage = new EventPage();
+            ePage.BindingContext = this.BindingContext;
+            await Navigation.PushAsync(ePage);
         }
 
         public async void EditEvent(object sender, EventArgs args) {
@@ -30,7 +30,8 @@ namespace FinalProject {
         public async void RemoveEvent(object sender, EventArgs args) {
             if (listView.SelectedItem != null) {
                 await App.Database.RemoveEventAsync((Event)listView.SelectedItem);  //remove selected event
-                await Navigation.PushAsync(new MainPage());                         //reload page with updated list
+                //await Navigation.PushAsync(new MainPage());                         //reload page with updated list
+                await Navigation.PopAsync();
             }
             else
                 await DisplayAlert("ERROR", "You did not select an event to remove.", "OK");
@@ -39,7 +40,7 @@ namespace FinalProject {
         // Populates listView from database
         protected override async void OnAppearing() {
             base.OnAppearing();
-            listView.ItemsSource = await App.Database.GetEventAsync();
+            listView.ItemsSource = await App.Database.GetEventsAsync(((Date)BindingContext).SelectedDateTime);
         }
     }
 }

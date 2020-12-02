@@ -23,8 +23,17 @@ namespace FinalProject {
         /// Retrieves a list of <c>Event</c>s from the SQLite database.
         /// </summary>
         /// <returns>A list of <c>Events</c>.</returns>
-        public Task<List<Event>> GetEventAsync() {
+        public Task<List<Event>> GetAllEventsAsync() {
             return _database.Table<Event>().ToListAsync();
+        }
+
+        /// <summary>
+        /// Retrieves a list of <c>Event</c>s from the SQLite database.
+        /// </summary>
+        /// <param name="date">Date to get events for.</param>
+        /// <returns>A list of <c>Events</c> on the given date.</returns>
+        public Task<List<Event>> GetEventsAsync(DateTime? date) {
+            return _database.Table<Event>().Where(w => w.StartTime == (DateTime)date).ToListAsync();
         }
 
         /// <summary>
@@ -36,6 +45,11 @@ namespace FinalProject {
             return _database.InsertAsync(_event);
         }
 
+        /// <summary>
+        /// Updates and <c>Event</c> in the SQLite database.
+        /// </summary>
+        /// <param name="_event">The <c>Event</c> to update in the database.</param>
+        /// <returns>The number of rows updated.</returns>
         public Task<int> EditEventAsync(Event _event)
         {
             return _database.InsertOrReplaceAsync(_event);

@@ -42,11 +42,12 @@ namespace FinalProject
             if (!string.IsNullOrWhiteSpace(nameEntry.Text)
                 && !string.IsNullOrWhiteSpace(descriptionEntry.Text)
                 && !string.IsNullOrEmpty(locationEntry.Text)) {
-                
+
                 await App.Database.SaveEventAsync(new Event {
                     Name = nameEntry.Text,
                     Description = descriptionEntry.Text,
-                    Location = locationEntry.Text
+                    Location = locationEntry.Text,
+                    StartTime = (DateTime)((Date)BindingContext).SelectedDateTime
                 });
 
                 await Navigation.PopToRootAsync(); //return to main page
@@ -72,22 +73,5 @@ namespace FinalProject
                 await Navigation.PopToRootAsync(); //returns to main page
             }
         }
-    }
-
-    class EventViewModel
-    {
-        //declare commands
-        public ICommand UpdateEventCommand => new Command(UpdateEvent);
-        
-        //declare properties
-        public string EntryEventName { get; set; }
-        public string EntryEventLocation { get; set; }
-        public string EntryEventDescription { get; set; }
-
-        public void UpdateEvent()
-        {
-            //TBD  
-        }
-
     }
 }
