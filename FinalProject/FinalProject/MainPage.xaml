@@ -7,9 +7,14 @@
     <ContentPage.Content>
         <StackLayout>
             <controls:Calendar x:Name="calendar"
+                               Padding="10,10,10,10"
+                               SelectedBorderWidth="4"
+                               DisabledBorderColor="Black"
                                ShowNumberOfWeek="False"
                                StartDay="Monday"
+                               SelectedDate="{Binding Date}"
                                SpecialDates="{Binding Events}"
+                               DateCommand="{Binding DateChosen}"
                                />
             <Button Text="View Events" Clicked="EventList"/>
         </StackLayout>
