@@ -11,15 +11,22 @@
             <Entry x:Name="locationEntry" Text="" Placeholder="Event Location"/>
             <Label Text="Please enter the event description: " FontSize="20" TextColor="Black"/>
             <Entry x:Name="descriptionEntry" Text="" Placeholder="Event Description"/>
-
-            <Button Text="Ok"
-                    x:Name="NewEventSaveButton"
-                    Clicked="SaveNewEvent"
-                    IsVisible="False"/>
-            <Button Text="Ok"
-                    x:Name="EditEventButton"
-                    Clicked="EditEvent"
-                    IsVisible="False"/>
+            <Label Text="Start Time: " FontSize="20" TextColor="Black"/>
+            <TimePicker x:Name="startTime"/>
+            <Label Text="End Time: " FontSize="20" TextColor="Black"/>
+            <TimePicker x:Name="endTime"/>
+            <Label Text="Set reminder for : " FontSize="20" TextColor="Black"/>
+            <TimePicker x:Name="reminderTime" />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button Text="Ok"
+                        x:Name="NewEventSaveButton"
+                        Clicked="SaveNewEvent"
+                        IsVisible="False"/>
+                <Button Text="Ok"
+                        x:Name="EditEventButton"
+                        Clicked="EditEvent"
+                        IsVisible="False"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

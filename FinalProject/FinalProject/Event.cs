@@ -42,6 +42,6 @@ namespace FinalProject {
         /// <summary>
         /// Minutes before event start time to send a reminder.
         /// </summary>
-        public int Reminder { get; set; }
+        public TimeSpan Reminder { get; set; }
     }
 }

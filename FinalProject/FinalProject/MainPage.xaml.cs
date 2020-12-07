@@ -11,20 +11,18 @@ namespace FinalProject
 {
     public partial class MainPage : ContentPage
     {
-        private DateTime? _date;
-        public DateTime? Date {
-            get {
-                return _date;
-            }
-            set {
-                _date = value;
-                OnPropertyChanged(nameof(Date));
-            }
-        }
+        List<XamForms.Controls.SpecialDate> Events;
 
         public MainPage()
         {
             InitializeComponent();
+            List<XamForms.Controls.SpecialDate> Events = new List<XamForms.Controls.SpecialDate>();
+
+            foreach (Event e in App.Database.GetAllEventsAsync().Result) {
+                Events.Add(new XamForms.Controls.SpecialDate(e.StartTime) {
+                    BackgroundColor = Color.Red
+                });
+            }
         }
 
         public async void EventList(object sender, EventArgs args) {

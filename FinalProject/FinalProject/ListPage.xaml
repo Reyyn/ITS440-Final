@@ -19,7 +19,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <StackLayout Orientation="Horizontal">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                 <Button Text="Add Event"
                     Clicked="NewEvent"/>
                 <Button Text="Edit Event"

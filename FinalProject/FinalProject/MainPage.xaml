@@ -9,6 +9,7 @@
             <controls:Calendar x:Name="calendar"
                                ShowNumberOfWeek="False"
                                StartDay="Monday"
+                               SpecialDates="{Binding Events}"
                                />
             <Button Text="View Events" Clicked="EventList"/>
         </StackLayout>
