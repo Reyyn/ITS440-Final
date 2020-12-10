@@ -10,7 +10,7 @@
     </NavigationPage.TitleView>
     
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout x:Name="stacklayout">
             <ListView x:Name="listView">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -22,7 +22,7 @@
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                 <Button Text="Add Event"
                     Clicked="NewEvent"/>
-                <Button Text="Edit Event"
+                <Button Text="View/Edit Event"
                     Clicked="EditEvent"/>
                 <Button Text="Remove Event"
                     Clicked="RemoveEvent"/>

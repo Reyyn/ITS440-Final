@@ -3,6 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:XamForms.Controls;assembly=XamForms.Controls.Calendar"
              x:Class="FinalProject.MainPage">
+    
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <Label x:Name="MainTitle" Text="" FontSize="Large" FontAttributes="Bold" />
+        </StackLayout>
+    </NavigationPage.TitleView>
 
     <ContentPage.Content>
         <StackLayout>
@@ -15,6 +21,8 @@
                                SelectedDate="{Binding Date}"
                                SpecialDates="{Binding Events}"
                                DateCommand="{Binding DateChosen}"
+                               RightArrowClicked="NextMonthAnimation"
+                               LeftArrowClicked="PreviousMonthAnimation"
                                />
             <Button Text="View Events" Clicked="EventList"/>
         </StackLayout>

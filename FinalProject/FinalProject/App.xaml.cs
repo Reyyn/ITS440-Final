@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FormsControls.Base;
+using System;
 using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -20,7 +21,7 @@ namespace FinalProject {
         public App() {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new AnimationNavigationPage(new MainPage());
         }
 
         protected override void OnStart() {

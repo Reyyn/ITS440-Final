@@ -3,15 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using FormsControls.Base;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace FinalProject {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ListPage : ContentPage {
-        public ListPage() {
+    public partial class ListPage : ContentPage, IAnimationPage {
+
+        public IPageAnimation PageAnimation { get; } = new PushPageAnimation
+        { 
+            Duration = AnimationDuration.Short, 
+            Subtype = AnimationSubtype.FromRight 
+        };
+
+        public void OnAnimationStarted(bool isPopAnimation)
+        {
+            // Put your code here but leaving empty works just fine
+        }
+
+        public void OnAnimationFinished(bool isPopAnimation)
+        {
+            // Put your code here but leaving empty works just fine
+        }
+
+        public  ListPage() {
             InitializeComponent();
+            //listAnmation();
+        }
+
+        public async void listAnmation()
+        {
+            await stacklayout.TranslateTo(0, 1000, 1);
+            await stacklayout.TranslateTo(0, 0, 350);
         }
 
         public async void NewEvent(object sender, EventArgs args) {
@@ -30,8 +54,8 @@ namespace FinalProject {
         public async void RemoveEvent(object sender, EventArgs args) {
             if (listView.SelectedItem != null) {
                 await App.Database.RemoveEventAsync((Event)listView.SelectedItem);  //remove selected event
-                //await Navigation.PushAsync(new MainPage());                         //reload page with updated list
-                await Navigation.PopAsync();
+
+                listView.ItemsSource = await App.Database.GetEventsAsync(((Date)BindingContext).SelectedDateTime);//reaload list after deletion.
             }
             else
                 await DisplayAlert("ERROR", "You did not select an event to remove.", "OK");

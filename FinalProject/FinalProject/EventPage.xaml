@@ -15,8 +15,6 @@
             <TimePicker x:Name="startTime"/>
             <Label Text="End Time: " FontSize="20" TextColor="Black"/>
             <TimePicker x:Name="endTime"/>
-            <Label Text="Set reminder for : " FontSize="20" TextColor="Black"/>
-            <TimePicker x:Name="reminderTime" />
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                 <Button Text="Ok"
                         x:Name="NewEventSaveButton"

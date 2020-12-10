@@ -6,14 +6,32 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using FormsControls.Base;
 
 namespace FinalProject
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class EventPage : ContentPage
+    public partial class EventPage : ContentPage, IAnimationPage
     {
         //declare class variable
         Event classCurEvent = new Event();
+
+
+        public IPageAnimation PageAnimation { get; } = new PushPageAnimation
+        { 
+            Duration = AnimationDuration.Short, 
+            Subtype = AnimationSubtype.FromRight 
+        };
+
+        public void OnAnimationStarted(bool isPopAnimation)
+        {
+            // Put your code here but leaving empty works just fine
+        }
+
+        public void OnAnimationFinished(bool isPopAnimation)
+        {
+            // Put your code here but leaving empty works just fine
+        }
 
         //new page constructor
         public EventPage()
@@ -35,7 +53,6 @@ namespace FinalProject
             descriptionEntry.Text = curEvent.Description;
             startTime.Time = curEvent.StartTime.TimeOfDay;
             endTime.Time = curEvent.EndTime.TimeOfDay;
-            reminderTime.Time = curEvent.Reminder;
             //make correct button visisble
             EditEventButton.IsVisible = true;
             //save info on curEvent to class variable for use elsewhere
@@ -61,13 +78,12 @@ namespace FinalProject
                     Description = descriptionEntry.Text,
                     Location = locationEntry.Text,
                     StartTime = start,
-                    EndTime = end,
-                    Reminder = reminderTime.Time
+                    EndTime = end
                 };
 
                 await App.Database.SaveEventAsync(classCurEvent);
 
-                await Navigation.PopToRootAsync(); //return to main page
+                await Navigation.PopAsync(); //return to list page
             }
         }
 
@@ -94,11 +110,10 @@ namespace FinalProject
                     Description = descriptionEntry.Text,
                     Location = locationEntry.Text,
                     StartTime = start,
-                    EndTime = end,
-                    Reminder = reminderTime.Time
+                    EndTime = end
                 }) ;
 
-                await Navigation.PopToRootAsync(); //returns to main page
+                await Navigation.PopAsync(); //returns to list page
             }
         }
     }
